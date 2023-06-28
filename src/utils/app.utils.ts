@@ -1,24 +1,34 @@
-import { App, ExpressReceiver, LogLevel } from '@slack/bolt';
-import './env';
+import { userTadas } from "../app";
 
-export const createApp = (appName: string) => {
-  const signingSecret = process.env.SLACK_SIGNING_SECRET!;
-  const token = process.env.SLACK_BOT_TOKEN;
+export function extractUserIDs(input: string): string[] {
+  const regex = /<@([^>]+)>/g;
+  const matches = input.match(regex);
 
-  const receiver = new ExpressReceiver({
-    signingSecret,
-    endpoints: {
-      events: `/${appName}/slack/events`,
-    },
-  });
+  if (matches) {
+    return matches.map(match => `<@${match.substring(2, match.length - 1)}>`);
+  }
 
-  const app = new App({
-    token,
-    receiver,
-    signingSecret,
-    appToken: process.env.SLACK_APP_TOKEN,
-    logLevel: LogLevel.DEBUG,
-  });
+  return [];
+}
 
-  return { app, receiver };
-};
+export function getTodoMessageResponse(message: { text: string }) {
+  const userIds = extractUserIDs(message.text);
+  if (userIds.length > 0) {
+    return `Hi! You sent a :tada: to ${userIds.join(', ')}.`
+  } else {
+    return `Hi! You sent a :tada:!`
+  }
+}
+
+export function saveOrGetUser(userId: string) {
+  const existingUser = userTadas.get(userId);
+
+  if (existingUser) {
+    existingUser.tadas--;
+  } else {
+    userTadas.set(userId, {
+      tadas: 5,
+      user: userId
+    })
+  }
+}
