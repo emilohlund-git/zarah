@@ -9,6 +9,7 @@
     "strict": true,
     "allowJs": true,
     "sourceMap": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "rootDir": "src",
     "outDir": "dist"
   },

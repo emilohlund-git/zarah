@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model SlackUser {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  slackId          String  @unique
+  real_name        String
+  is_bot           Boolean @default(false)
+  is_admin         Boolean @default(false)
+  is_owner         Boolean @default(false)
+  innovative_coins Int     @default(1)
+  competent_coins  Int     @default(1)
+  engaged_coins    Int     @default(1)
+}
