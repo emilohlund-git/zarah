@@ -1,14 +1,13 @@
-# Slack Bot Name
+# Zarah
 
-![Slack Bot Logo](path/to/logo.png)
-
-Short description or tagline of your Slack bot.
+<!-- Replace "path/to/logo.png" with the actual path to your image file -->
+<img src="src/zarah.png" alt="Slack Bot Logo" width="200" height="200" style="border-radius: 15%;">
 
 ## Overview
 
-The Slack Bot Name is an intelligent assistant that enhances your Slack workspace by enabling seamless communication and automating various tasks. It provides advanced features such as handling Netcoin transactions, user management, and interactive chat responses.
+The Zarah bot is an intelligent assistant that enhances your Slack workspace by enabling seamless communication and automating various tasks. It provides advanced features such as handling Netcoin transactions, user management, and interactive chat responses.
 
-With Slack Bot Name, users can effortlessly send and receive Netcoins, a virtual currency within your Slack workspace. The bot supports different types of Netcoins, including Competent, Engaged, and Innovative. Additionally, the bot offers intelligent chat responses, generating dynamic and context-aware replies to user interactions.
+With Zarah, users can effortlessly send and receive Netcoins, a virtual currency within your Slack workspace. The bot supports different types of Netcoins, including Competent, Engaged, and Innovative. Additionally, the bot offers intelligent chat responses, generating dynamic and context-aware replies to user interactions.
 
 ## Installation
 
@@ -54,8 +53,6 @@ We have an exciting roadmap for Slack Bot Name with several upcoming features an
 
 - Customizable Chat Responses: Allow users to define custom chat response templates and create their own conversational experiences.
 
-We encourage the Slack community to get involved, provide feedback, and contribute to the project's development.
-
 ## Contributing
 
 Contributions to Slack Bot Name are welcome! To contribute, please follow these guidelines:
@@ -69,4 +66,4 @@ Please ensure that your contributions align with the project's code of conduct.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE
+This project is licensed under the [MIT License](LICENSE)
