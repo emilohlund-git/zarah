@@ -1,4 +1,5 @@
 import { App, LogLevel } from '@slack/bolt';
+import express from 'express';
 import { CoinService } from './domain/services/coin.service';
 import MessageService from './domain/services/message.service';
 import { ResponseService } from './domain/services/response.service';
@@ -6,6 +7,8 @@ import { UserService } from './domain/services/user.service';
 import { UserRepository } from './infrastructure/user.repository';
 import { appHomeOpenedHandler } from './services/event.service';
 import './utils/env';
+
+const expressApp = express();
 
 export const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -28,8 +31,16 @@ const messageService = new MessageService(coinService, userService, responseServ
     await messageService.sendNetcoins(args);
   });
 
+
+
   app.event('app_home_opened', appHomeOpenedHandler);
 
   await app.start(process.env.PORT || 3000);
   console.log('⚡️ Bolt app is running!');
+
+  expressApp.post('challenge', (req, res) => {
+    console.log(req.body);
+  })
+
+  expressApp.listen(process.env.PORT || 3000);
 })();
